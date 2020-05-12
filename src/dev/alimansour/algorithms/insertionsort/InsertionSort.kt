@@ -1,4 +1,4 @@
-package dev.alimansour.algorithms.selectionsort
+package dev.alimansour.algorithms.insertionsort
 
 /**
  * Data Structures And Algorithms Using Kotlin
@@ -12,31 +12,26 @@ package dev.alimansour.algorithms.selectionsort
 
 // Time Complexity : O(n2)
 // Space Complexity: O(1)
-// Stability       : unstable sort algorithm
+// Stability       : stable sort algorithm
 
 fun main() {
     val intArray = arrayOf(20, 35, -15, 7, 55, 1, -22)
-    intArray.selectionSort()
+    intArray.insertionSort()
     for (e in intArray) {
         print("$e ")
     }
 }
 
-
-private fun Array<Int>.selectionSort() {
-    var lastUnsortedIndex = this.size - 1
-    while (lastUnsortedIndex > 0) {
-        var largest = 0
-        for (i in 1..lastUnsortedIndex) {
-            if (this[i] > this[largest]) largest = i
+private fun Array<Int>.insertionSort() {
+    var firstUnsortedIndex = 1
+    while (firstUnsortedIndex < size) {
+        val newElement = this[firstUnsortedIndex]
+        var i = firstUnsortedIndex
+        while (i > 0 && this[i - 1] > newElement) {
+            this[i] = this[i - 1]
+            i--
         }
-        swap(largest, lastUnsortedIndex)
-        lastUnsortedIndex--
+        this[i] = newElement
+        firstUnsortedIndex++
     }
-}
-
-private fun Array<Int>.swap(first: Int, last: Int) {
-    val temp = this[first]
-    this[first] = this[last]
-    this[last] = temp
 }
