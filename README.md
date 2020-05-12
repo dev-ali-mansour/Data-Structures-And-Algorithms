@@ -4,7 +4,7 @@ These files was created for training purpose only By Ali Mansour Mohamed to help
 Data Structures and Algorithms using Kotlin.
 
 #Notice:
-This topic is not tied with a specific programming language So you can read and practise the examples in this
+This topic is not tied with a specific programming language. So you can read and practise the examples in this
 project using your preferred language.
 
 #Contact me

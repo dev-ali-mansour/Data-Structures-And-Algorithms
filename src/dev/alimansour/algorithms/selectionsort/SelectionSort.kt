@@ -1,4 +1,4 @@
-package dev.alimansour.algorithms.bubblesort
+package dev.alimansour.algorithms.selectionsort
 
 /**
  * Data Structures And Algorithms Using Kotlin
@@ -12,32 +12,30 @@ package dev.alimansour.algorithms.bubblesort
 
 // Time Complexity : O(n2)
 // Space Complexity: O(1)
-// Stability       : stable sort algorithm
+// Stability       : unstable sort algorithm
 
 fun main() {
     val intArray = arrayOf(20, 35, -15, 7, 55, 1, -22)
-    intArray.bubbleSort()
+    intArray.selectionSort()
     for (e in intArray) {
         print("$e ")
     }
 }
 
-/**
- * Bubble Sort Algorithm
- */
-private fun Array<Int>.bubbleSort() {
+private fun Array<Int>.selectionSort() {
     var lastUnsortedIndex = this.size - 1
     while (lastUnsortedIndex > 0) {
-        for (i in 0..lastUnsortedIndex) {
-            if (this[i] > this[lastUnsortedIndex]) this.swap(i, lastUnsortedIndex)
+        var largest = 0
+        for (i in 1..lastUnsortedIndex) {
+            if (this[i] > this[largest]) largest = i
         }
+        swap(largest, lastUnsortedIndex)
         lastUnsortedIndex--
     }
 }
 
-private fun Array<Int>.swap(first: Int, second: Int) {
-    if (first == second) return
+private fun Array<Int>.swap(first: Int, last: Int) {
     val temp = this[first]
-    this[first] = this[second]
-    this[second] = temp
+    this[first] = this[last]
+    this[last] = temp
 }
